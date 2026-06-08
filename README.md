@@ -2,7 +2,7 @@
 
 **Precision Farm Intelligence Platform** — AI-powered crop monitoring, livestock management, CCTV security, and blockchain-secured financial records for smallholder and commercial farmers.
 
-![Alt Text](asset/main.png)
+![Alt Text](src/asset/main.png)
 
 > Built with React · Claude AI · Hedera Hashgraph · MCP · YOLOv8 Computer Vision . GitHub Copilot
 
@@ -54,7 +54,7 @@ All sensor data is currently **synthetically generated** for demonstration purpo
 
 ---
 
-![Alt Text](asset/dashboard.png)
+![Alt Text](src/asset/dashboard.png)
 
 ## Tech Stack
 
