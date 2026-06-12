@@ -60,7 +60,7 @@ All sensor data is currently **synthetically generated** for demonstration purpo
 
 - **Frontend** — React 18, TypeScript, Vite, Tailwind CSS
 - **AI** — Anthropic Claude (`claude-sonnet-4-20250514`) via REST API
-**Fabric** — Fabric IQ
+- **Fabric** — Fabric IQ
 - **Blockchain** — Hedera Hashgraph SDK (`@hashgraph/sdk`) — transactions, HCS topics, NFT minting
 - **MCP** — Model Context Protocol — drone, soil, weather, market price, and finance connectors
 - **Computer Vision** — YOLOv8 ONNX (via `onnxruntime-web` Web Worker) for CCTV detection

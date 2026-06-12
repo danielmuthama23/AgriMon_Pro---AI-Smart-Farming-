@@ -157,6 +157,21 @@ agrismart-pro/
 ├── vite.config.ts
 └── tsconfig.json
 ```
+## Fabric Structure
+
+```
+src/fabric/
+├── types/
+│   └── index.d.ts          # FabricSnapshot, FabricIQResult, score & rec types
+├── core/
+│   ├── scoring.ts           # scoreSoil, scoreDisease, scoreZone, scoreFinance, scoreSecurity
+│   ├── recommendations.ts   # rule-based recommendation generators
+│   └── fabricIQ.ts          # runFabricIQ() — orchestrates scoring + recs
+├── connectors/
+│   ├── storeConnector.ts    # buildSnapshotFromStores() — Zustand -> FabricSnapshot
+│   └── useFabricIQ.ts        # React hook, polls stores and runs Fabric IQ
+└── index.ts                  # barrel export
+```
 
 ---
 
