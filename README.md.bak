@@ -1,6 +1,8 @@
-# 🌿 AgriSmart Pro
+# 🌿 AgriMon Pro 
 
 **Precision Farm Intelligence Platform** — AI-powered crop monitoring, livestock management, CCTV security, and blockchain-secured financial records for smallholder and commercial farmers.
+
+![Alt Text](asset/main.png)
 
 > Built with React · Claude AI · Hedera Hashgraph · MCP · YOLOv8 Computer Vision . GitHub Copilot
 
@@ -30,7 +32,7 @@
 
 ## Overview
 
-AgriSmart Pro consolidates drone camera feeds, soil sensors, weather history, livestock data, and farm finances into a single dashboard. It uses Claude AI for agronomic advice, YOLOv8 for real-time intruder and animal detection, and Hedera Hashgraph for tamper-proof transaction and incident records.
+AgriMon Pro  consolidates drone camera feeds, soil sensors, weather history, livestock data, and farm finances into a single dashboard. It uses Claude AI for agronomic advice, YOLOv8 for real-time intruder and animal detection, and Hedera Hashgraph for tamper-proof transaction and incident records.
 
 All sensor data is currently **synthetically generated** for demonstration purposes, making it easy to run without any physical hardware. Every data source is designed to be swapped for a real API by replacing a single file in `src/data/`.
 
@@ -51,6 +53,8 @@ All sensor data is currently **synthetically generated** for demonstration purpo
 | 📚 Best Practices | Evidence-based agronomy tips, seasonal planting calendar |
 
 ---
+
+![Alt Text](asset/dashboard.png)
 
 ## Tech Stack
 
@@ -277,7 +281,7 @@ A 12-month planting calendar shows optimal sowing and growing windows for maize,
 
 ## Hedera Integration
 
-AgriSmart Pro uses Hedera Hashgraph for three purposes:
+AgriMon Pro  uses Hedera Hashgraph for three purposes:
 
 **1. Financial transactions** (`lib/hedera/transactions.ts`)
 
@@ -449,4 +453,4 @@ MIT License — see [LICENSE](./LICENSE) for details.
 
 ---
 
-*AgriSmart Pro · MCP Integrated · Hedera Hashgraph Secured · YOLOv8 Computer Vision · Claude AI Advisor*
+*AgriMon Pro  · MCP Integrated · Hedera Hashgraph Secured · YOLOv8 Computer Vision · Claude AI Advisor*
