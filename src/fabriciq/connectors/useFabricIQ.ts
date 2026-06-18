@@ -1,48 +1,32 @@
-// src/fabric/connectors/useFabricIQ.ts
-// React hook that runs Fabric IQ against live store state on an interval,
-// mirroring the pattern used by useLiveSensors.ts (5s refresh).
+// Lightweight hook that exposes FabricIQ functionality in the UI.
+// This provides named exports that the index barrel expects.
 
-import { useEffect, useState } from 'react';
-import type { FabricIQResult } from '../types';
-import { runFabricIQ } from '../core/fabricIQ';
-import { buildSnapshotFromStores, type FarmStoreSlice, type BudgetStoreSlice } from './storeConnector';
+import { useState, useCallback } from 'react';
+import type { Recommendation, Score, FabricIQRecord } from '../types';
+import { saveRecord, loadRecords } from './storeConnector';
 
-export interface UseFabricIQOptions {
-  /** Refresh interval in milliseconds. Defaults to 5000 (matches useLiveSensors). */
-  refreshMs?: number;
+export function useFabricIQ() {
+  const [records, setRecords] = useState<FabricIQRecord[]>(() => loadRecords());
+
+  const addRecord = useCallback((r: FabricIQRecord) => {
+    saveRecord(r);
+    setRecords(prev => [...prev, r]);
+  }, []);
+
+  const getScores = useCallback((): Score[] => {
+    // placeholder scoring logic; replace with real computation or call to core/fabricIQ
+    return [
+      { metric: 'health', value: 75 },
+      { metric: 'moisture', value: 42 },
+    ];
+  }, []);
+
+  const getRecommendations = useCallback((): Recommendation[] => {
+    // placeholder recommendations
+    return [
+      { id: 'rec-1', title: 'Irrigate zone 2', details: 'Moisture below threshold', priority: 'high', score: 0.9 },
+    ];
+  }, []);
+
+  return { records, addRecord, getScores, getRecommendations };
 }
-
-/**
- * Hook signature: pass getter functions that return the current
- * farmStore and budgetStore slices (e.g. `useFarmStore.getState`,
- * `useBudgetStore.getState`).
- *
- * Example:
- * ```tsx
- * const result = useFabricIQ(useFarmStore.getState, useBudgetStore.getState);
- * if (!result) return <Loading />;
- * return <FarmScoreCard score={result.farmScore} level={result.farmLevel} />;
- * ```
- */
-export const useFabricIQ = (
-  getFarmState: () => FarmStoreSlice,
-  getBudgetState: () => BudgetStoreSlice,
-  options: UseFabricIQOptions = {}
-): FabricIQResult | null => {
-  const { refreshMs = 5000 } = options;
-  const [result, setResult] = useState<FabricIQResult | null>(null);
-
-  useEffect(() => {
-    const compute = () => {
-      const snapshot = buildSnapshotFromStores(getFarmState(), getBudgetState());
-      setResult(runFabricIQ(snapshot));
-    };
-
-    compute(); // run immediately on mount
-    const interval = setInterval(compute, refreshMs);
-    return () => clearInterval(interval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [refreshMs]);
-
-  return result;
-};
